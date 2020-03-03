@@ -1,0 +1,120 @@
+// Flex based structural elements
+// ----------
+
+.f-container {
+    display: flex;
+    flex-wrap: wrap;
+    // Direct Modifiers
+    &--column {
+        flex-direction: column;
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+    // Breakpoint Modifiers
+    &--small {
+        display: inherit;
+
+        @include respond-to(small) {
+            display: flex;
+        }
+    }
+
+    &--maps {
+        @include respond-to(small-max) {
+            flex-direction: column;
+
+            .cinemaInfoMap {
+                height: 300px;
+            }
+        }
+    }
+}
+
+.f-item {
+    flex: 1;
+    margin-right:1rem;
+    // Contextual Modifiers
+
+    .two-col-text &,
+    .location-block & {
+        @include respond-to(small) {
+            padding-right: 2rem;
+        }
+    }
+
+    .signpost-container & {
+        margin-right: 1rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    .form-item & {
+        margin: 0 .5rem;
+
+        &:first-of-type {
+            margin-left: 0;
+        }
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    // Direct Modifiers
+    
+    &--3 {
+        flex: 1;
+
+        @include respond-to(small) {
+            flex: 3;
+        }
+    }
+    
+    &--2 {
+        flex: 1;
+
+        @include respond-to(small) {
+            flex: 2;
+        }
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+
+.f-center-vertical {
+    align-items: center;
+
+    // Modifiers
+    &.f-container--column {
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+
+.f-center-horizontal {
+    justify-content: center;
+
+    &.f-container--column {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &.f-center-vertical.f-container--column {
+        align-items: center;
+        justify-content: center;
+    }
+} 
+
+// Justify Content
+.jc {
+    &--space-around {
+        justify-content: space-around;
+    }
+}

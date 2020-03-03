@@ -1,0 +1,10 @@
+.movie-grid {
+    width:90%;
+    max-width:1440px;
+    margin: 0 auto;
+
+    &__item {
+        position:relative;
+        width:100%;
+    }
+}

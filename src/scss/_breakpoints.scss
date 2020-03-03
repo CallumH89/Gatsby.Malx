@@ -1,0 +1,36 @@
+// Breakpoints Map
+// ---------------
+//
+// Stores variables for all breakpoints used for the site.
+// - Uses the `respond-to()` mixin to output values min-width or max-with.
+//
+// ================
+
+$grid-xs-small: 600px;
+$grid-small: 768px;
+$grid-medium: 992px;
+$grid-large: 1240px;
+$grid-x-large: 1680px;
+$grid-xx-large: 1920px;
+$design-optimised: 1440px;
+$site-container: 1600px;
+
+$breakpoints: (
+	// grid breakpoints
+	'xs-small': (min-width: $grid-xs-small),
+	'small': (min-width: $grid-small),
+	'medium': (min-width: $grid-medium),
+	'large': (min-width: $grid-large),
+	'x-large': (min-width: $grid-x-large),
+	'xx-large': (min-width: $grid-xx-large + 1),
+	// sematic breakpoints
+	'sml-mid-range': (min-width: 800px),
+	'design-optimised': (min-width: $design-optimised),
+ 	'mobile-nav': (max-width: $grid-large - 1),
+ 	'xs-small-max': (max-width: $grid-xs-small - 1),
+ 	'small-max': (max-width: $grid-small - 1),
+ 	'medium-max': (max-width: $grid-medium - 1),
+ 	'large-max': (max-width: $grid-large - 1),
+    // container
+    'container': (min-width: $site-container)
+) !default;

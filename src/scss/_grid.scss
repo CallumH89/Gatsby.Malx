@@ -1,0 +1,446 @@
+// Grid Layout Styles
+// ----------
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+        flex: 0 0 auto;
+    }
+
+    &--2-col > div {
+        @include respond-to(small) {
+            width: calc(50% - 1rem);
+
+            &:nth-child(2n) {
+                margin-left: 2rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    &--3-col > div {
+        @include respond-to(xs-small) {
+            width: calc(50% - 20px);
+
+            &:nth-child(2n) {
+                margin-left: 40px;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 40px;
+            }
+        }
+
+        @include respond-to(medium) {
+            width: calc(33.33333333333333% - 26.66666666666667px);
+            margin: 0 0 0 40px;
+
+            &:nth-child(3n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 4) {
+                margin-top: 40px;
+            }
+        }
+    }
+
+    &--4-col > div {
+        @include respond-to(small-max) {
+            width: calc(50% - 0.5rem);
+
+            &:nth-child(2n) {
+                margin-left: 1rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(small) {
+            width: calc(25% - 0.75rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(4n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 5) {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &--5-col > div {
+        @include respond-to(small-max) {
+            width: calc(50% - 0.5rem);
+
+            &:nth-child(2n) {
+                margin-left: 1rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(small) {
+            width: calc(33.33333333333333% - 0.6666666666666667rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(3n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 4) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(medium) {
+            width: calc(25% - 0.75rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(4n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 5) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(large) {
+            width: calc(20% - 0.8rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(5n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 6) {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &--6-col > div {
+        @include respond-to(small-max) {
+            width: calc(50% - 0.5rem);
+
+            &:nth-child(2n) {
+                margin-left: 1rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(small) {
+            width: calc(33.33333333333333% - 0.6666666666666667rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(3n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 4) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(medium) {
+            width: calc(20% - 0.8rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(5n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 6) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(large) {
+            width: calc(16.66666666666667% - 0.8333333333333333rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(6n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 7) {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &--7-col > div {
+        @include respond-to(xs-small-max) {
+            width: calc(50% - 0.5rem);
+
+            &:nth-child(2n) {
+                margin-left: 1rem;
+            }
+
+            &:nth-child(n + 3) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(xs-small) {
+            width: calc(25% - 0.75rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(4n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 5) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(small) {
+            width: calc(20% - 0.8rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(5n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 6) {
+                margin-top: 1rem;
+            }
+        }
+
+        @include respond-to(large) {
+            width: calc(14.28571428571429% - 0.8571428571428571rem);
+            margin: 0 0 0 1rem;
+
+            &:nth-child(7n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(n + 8) {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &--2-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(small) {
+            width: 50%;
+        }
+    }
+
+    &--3-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(xs-small) {
+            width: 50%;
+        }
+
+        @include respond-to(medium) {
+            width: 33.33333333333333%;
+        }
+    }
+
+    &--4-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(small-max) {
+            width: 50%;
+        }
+
+        @include respond-to(small) {
+            width: 25%;
+        }
+    }
+
+    &--5-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(small-max) {
+            width: 50%;
+        }
+
+        @include respond-to(small) {
+            width: 33.33333333333333%;
+        }
+
+        @include respond-to(medium) {
+            width: 25%;
+        }
+
+        @include respond-to(large) {
+            width: 20%;
+        }
+    }
+
+    &--6-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(small-max) {
+            width: 50%;
+        }
+
+        @include respond-to(small) {
+            width: 33.33333333333333%;
+        }
+
+        @include respond-to(medium) {
+            width: 20%;
+        }
+
+        @include respond-to(large) {
+            width: 16.66666666666667%;
+        }
+    }
+
+    &--7-col.grid--nogap > div {
+        margin: 0;
+
+        @include respond-to(xs-small-max) {
+            width: 50%;
+        }
+
+        @include respond-to(xs-small) {
+            width: 25%;
+        }
+
+        @include respond-to(small) {
+            width: 20%;
+        }
+
+        @include respond-to(large) {
+            width: 14.28571428571429%;
+        }
+    }
+}
+
+@supports (display: grid) {
+    .grid {
+        display: grid;
+
+        &.grid > div {
+            width: auto;
+            margin: 0;
+        }
+
+        &--2-col {
+            grid-gap: 2rem;
+
+            @include respond-to(small) {
+                -ms-grid-columns: 50% 50%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        &--3-col {
+            grid-gap: 40px;
+
+            @include respond-to(xs-small) {
+                -ms-grid-columns: 50% 50%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include respond-to(medium) {
+                -ms-grid-columns: 33% 33% 33%;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        &--4-col {
+            grid-gap: .5rem;
+            -ms-grid-columns: 50% 50%;
+            grid-template-columns: repeat(2, 1fr);
+
+            @include respond-to(small) {
+                grid-gap: 1rem;
+                -ms-grid-columns: 25% 25% 25% 25%;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        &--5-col {
+            grid-gap: .5rem;
+            -ms-grid-columns: 50% 50%;
+            grid-template-columns: repeat(2, 1fr);
+
+            @include respond-to(small) {
+                grid-gap: 1rem;
+                -ms-grid-columns: 33% 33% 33%;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include respond-to(medium) {
+                -ms-grid-columns: 25% 25% 25% 25%;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @include respond-to(large) {
+                -ms-grid-columns: 20% 20% 20% 20% 20%;
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        &--6-col {
+            grid-gap: .5rem;
+            -ms-grid-columns: 50% 50%;
+            grid-template-columns: repeat(2, 1fr);
+
+            @include respond-to(small) {
+                grid-gap: 1rem;
+                -ms-grid-columns: 33% 33% 33%;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include respond-to(medium) {
+                -ms-grid-columns: 20% 20% 20% 20% 20%;
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            @include respond-to(large) {
+                -ms-grid-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        &--7-col {
+            grid-gap: .5rem;
+            -ms-grid-columns: 50% 50%;
+            grid-template-columns: repeat(2, 1fr);
+
+            @include respond-to(xs-small) {
+                -ms-grid-columns: 25% 25% 25% 25%;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @include respond-to(small) {
+                -ms-grid-columns: 20% 20% 20% 20% 20%;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: 1rem;
+            }
+
+            @include respond-to(large) {
+                -ms-grid-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+                grid-template-columns: repeat(7, 1fr);
+            }
+        }
+
+        &--nogap {
+            grid-gap: 0.01rem;
+        }
+    }
+}

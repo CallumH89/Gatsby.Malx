@@ -1,0 +1,87 @@
+// Structural Page Element Styles
+// ----------
+
+// Containers
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: $site-container;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    // Direct Modifiers
+    &--no-padding {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &--narrow {
+        max-width: $design-optimised;
+    }
+
+    &--border {
+        max-width: 1100px;
+    }
+
+    &--thin {
+        max-width: $grid-xs-small;
+    }
+
+    &--form-field {
+        max-width: 400px;
+    }
+
+    &--form {
+        max-width: $grid-medium;
+    }
+
+
+    &--text {
+        max-width: 1220px;
+
+        a {
+            color: white
+        }
+    }
+    // Contextual Modifiers
+    .site-footer & {
+        @include respond-to(xs-small) {
+            padding-left: 14px;
+            padding-right: 14px;
+        }
+
+        @include respond-to(small) {
+            padding-left: 66px;
+            padding-right: 66px;
+        }
+
+        @include respond-to(large) {
+            padding-left: 81px;
+            padding-right: 81px;
+        }
+    }
+
+    .aux-panel & {
+        padding: 0;
+    }
+}
+
+// Section Block
+
+.section-block {
+    position: relative;
+    padding: 0 1rem;
+    // &:last-of-type {
+    //     padding-bottom: 0;
+    // }
+    // Padded
+    &--pad {
+        padding: 2rem 1rem;
+    }
+    // Full Width
+    &--fw {
+        padding-right: 0;
+        padding-left: 0;
+    }
+} 
