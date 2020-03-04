@@ -2,18 +2,26 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Times } from '../../types';
 import { SingleSession, SessionExperiences, SessionTime } from '../SingleSession/SingleSession';
+import LoadingOverlay from 'react-loading-overlay';
 import {H6} from '../Typography/Typography';
 
 interface SessionsContainerProps {
   filmId: string;
   sessions?: any[];
   filmTitle?: string;
+  loading?: boolean;
 }
 
 interface SessionListProps {
     date: string;
     times?: Times[];
   }
+
+
+const LoadingOverlayStyled = styled(LoadingOverlay)`
+    position:unset!important;
+`;
+
 
 const MovieSessionContainer = styled.div`
 margin-bottom:2rem;
@@ -28,9 +36,11 @@ export class SessionsContainer extends React.Component<SessionsContainerProps> {
         super(props)
         this.state = {
             filmTitle: "",
-            sessions: []
+            sessions: [],
+            loading: true
         }
         this.getShowtimes = this.getShowtimes.bind(this);
+        this.setLoading = this.setLoading.bind(this);
     }
     getShowtimes() {
         fetch(`https://moviegeorgiaapi.peachdigital.com/movies/34/200/${this.props.filmId}`)
@@ -39,21 +49,32 @@ export class SessionsContainer extends React.Component<SessionsContainerProps> {
             if (data.Sessions !== undefined && data.Sessions.length > 0) {
                 this.setState({
                     filmTitle:data.Title,
-                    sessions:data.Sessions
+                    sessions:data.Sessions,
+                    loading:false
                 });
             } else {
                 this.setState({
-                    sessions: []
+                    sessions: [],
+                    loading:false
                 });
             }
         });
     }
+    
+    setLoading(val) {
+        this.setState({
+            loading: val
+        });
+    }
+    
     componentDidMount() {
         this.getShowtimes();
     }
+
     render() {
           return (
               <>
+                <LoadingOverlayStyled spinner={true} active={this.state.loading} fadeSpeed={300} />
                 {this.state.sessions.length > 0 &&
                     this.state.sessions.map((sessionList, i) => (
                     <SingleMovieSessions
