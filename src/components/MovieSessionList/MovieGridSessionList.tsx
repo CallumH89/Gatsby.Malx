@@ -22,7 +22,6 @@ padding-top:1rem;
 
 const MovieGridSessionList: React.FunctionComponent<SessionListProps> = props => {
   const {sessionsPerRow} = React.useContext(MovieGridContext);
-
   return (
     <SessionsContainer data-testid="movie-sessions">
       <Grid container spacing={2}>

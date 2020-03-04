@@ -1,6 +1,5 @@
 import React from "react"
-import styled from 'styled-components';
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import "../scss/app.scss";
 import { MovieGrid, MovieGridContext } from "../components/MovieGrid/MovieGrid";
 import Layout from "../components/layout"
@@ -13,11 +12,11 @@ export default ({ data }) => {
           Now Showing
         </h1>
           <MovieGridContext.Provider value={{
-            showSessions:false,
+            showSessions:true,
             hasSynopsis: true,
             hasDetails: true,
             isCentered: false,
-            sessionsPerRow: 3,
+            sessionsPerRow: 4,
             hasTrailerIcon: true,
             hasOverlay: true,
             isTrailerOnly:false}}>
@@ -30,7 +29,7 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-query {
+{
   allMovies {
     edges {
       node {
@@ -43,15 +42,38 @@ query {
           DisplayDate
           ActualDate
           ActualDisplayDate
+          Times {
+            StartTime
+            Scheduleid
+            SoldOut
+            NotBookable
+            SessionExpired
+            CinemaId
+            CinemaName
+            Screen
+            Experience {
+              Id
+              Name
+              ExternalId
+              Description
+              Order
+            }
+          }
         }
         RunTime
         Img
+        localImage {
+          childImageSharp {
+            fluid(maxWidth: 200) {
+              src
+            }
+          }
+        }
         FilmId
         FriendlyName
       }
     }
   }
 }
-
 
 `

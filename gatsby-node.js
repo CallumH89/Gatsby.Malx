@@ -1,5 +1,5 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { onCreateNode, createRemoteFileNode, downloadMediaFiles  } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`
@@ -21,3 +21,28 @@ exports.createPages = async function({ actions, graphql }) {
     })
   })
 }
+
+
+exports.onCreateNode = async ({  node,  actions: { createNode },  store,  cache,  createNodeId,}) =>  
+ {
+    let fileNode
+    if (node.internal.type === `Movies`) {
+      try {
+        fileNode = await createRemoteFileNode({
+          url: node.Img,
+          parentNodeId: node.id,
+          store,
+          cache,
+          createNode,
+          createNodeId,
+        })
+      } catch (e) {
+        // Ignore
+        console.log(e)
+      }
+    }
+
+    if (fileNode) {
+      node.localImage___NODE = fileNode.id
+    }
+  }
