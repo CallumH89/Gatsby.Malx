@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {MoviePosterOverlayContainer, MoviePosterOverlayTrailer} from './MoviePosterOverlay'
+import Img from "gatsby-image"
 
 export const MoviePosterContainer = styled.div`
   position:relative;
@@ -14,7 +15,7 @@ export const MoviePosterContainer = styled.div`
   }
 `;
 
-export const MoviePoster = styled.img`
+export const MoviePoster = styled(Img)`
   width: 100%;
   height: 100%;
   object-fit: cover;
