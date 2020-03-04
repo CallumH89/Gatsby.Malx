@@ -1,4 +1,4 @@
-# Gatsby.MAlx
+# Gatsby.Malx
 Running gatsby with movie data and components from ScreenPlay (Parasite)
 
 
