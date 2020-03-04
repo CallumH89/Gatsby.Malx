@@ -12,7 +12,7 @@ export default ({ data }) => {
           Now Showing
         </h1>
           <MovieGridContext.Provider value={{
-            showSessions:true,
+            showSessions:false,
             hasSynopsis: true,
             hasDetails: true,
             isCentered: false,
@@ -35,6 +35,7 @@ export const query = graphql`
       node {
         id
         Title
+        Trailer
         Synopsis
         Sessions {
           Date

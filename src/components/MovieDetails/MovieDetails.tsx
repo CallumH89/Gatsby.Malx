@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from "gatsby"
 import { TrailerIcon } from '../TrailerIcon/TrailerIcon';
 import {H4, P} from '../Typography/Typography';
 import {MovieGridContext} from '../MovieGrid/MovieGrid';
@@ -8,6 +9,8 @@ interface detailsProps {
   hasTrailerIcon?: boolean; 
   isOverlay?: boolean; 
   title?: string;
+  trailer?: string;
+  friendlyName?: string;
   rating?: string;
   runtime?: string;
   synopsis?: string;
@@ -20,6 +23,11 @@ export const MovieDetailsContainer = styled("div")<detailsProps>`
     grid-template-columns: auto 40px;`}
 
     & ${H4} {
+
+      & a {
+        color:#000;
+        text-decoration:none;
+      }
       margin-top:0;
       margin-bottom:0rem;
     }
@@ -49,7 +57,11 @@ export const MovieDetails: React.FunctionComponent<detailsProps> = props => {
   return (
     <MovieDetailsContainer isOverlay={props.isOverlay} hasTrailerIcon={hasTrailerIcon} className={isCentered ? "ta__center" : ""}>
       <div>
-      <H4>{props.title}</H4>
+      <H4>{props.friendlyName?
+        <Link to={props.friendlyName}>{props.title}</Link> : 
+        props.title
+      }
+        </H4>
         <MovieInfo>
           <P>{props.runtime}</P>
           <P>{props.rating}</P>
@@ -60,7 +72,7 @@ export const MovieDetails: React.FunctionComponent<detailsProps> = props => {
           </MovieSynopsis>
         }
       </div>
-      {hasTrailerIcon && !props.isOverlay &&
+      {hasTrailerIcon && !props.isOverlay && props.trailer &&
       <div>
           <TrailerIcon inverted={true} />
       </div>

@@ -49,6 +49,7 @@ export const MovieGrid: React.FunctionComponent<ListingProps> = props => {
               friendlyName={singleFilm.node.FriendlyName}
               title={singleFilm.node.Title}
               rating={singleFilm.node.Cert}
+              trailer={singleFilm.node.Trailer}
               runtime={singleFilm.node.RunTime}
               synopsis={singleFilm.node.Teaser}
               poster={singleFilm.node.localImage.childImageSharp.fluid}

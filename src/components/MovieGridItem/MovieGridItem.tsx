@@ -11,6 +11,7 @@ interface itemProps {
   title: string;
   rating?: string;
   runtime?: string;
+  trailer?: string;
   synopsis?: string;
   friendlyName?: string;
   filmId: number;
@@ -39,6 +40,7 @@ const MovieGridItem: React.FunctionComponent<itemProps> = props => {
             isOverlay={true}
             synopsis={props.synopsis} 
             title={props.title} 
+            trailer={props.trailer}
             friendlyName={props.friendlyName} 
             rating={props.rating} 
             runtime={props.runtime} />
@@ -50,6 +52,8 @@ const MovieGridItem: React.FunctionComponent<itemProps> = props => {
           isOverlay={false}
           synopsis={props.synopsis} 
           title={props.title}
+          trailer={props.trailer}
+          friendlyName={props.friendlyName} 
           rating={props.rating}
           runtime={props.runtime} /> }
       </MovieDetailsContainer>

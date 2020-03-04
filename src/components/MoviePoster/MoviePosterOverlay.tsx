@@ -5,7 +5,7 @@ import arrowIcon from '../../libs/svg/icon-arrow.svg';
 import {MovieInfo, MovieDetails, MovieSynopsis} from '../MovieDetails/MovieDetails';
 import {H4, P} from '../Typography/Typography';
 import { TrailerIcon } from '../TrailerIcon/TrailerIcon';
-import { Button, Buttons, GatsbyLink } from '../Button/Button';
+import { Button, Buttons, GatsbyLink, StyledLink } from '../Button/Button';
 import {MovieGridContext} from '../MovieGrid/MovieGrid';
 
 export const MoviePosterOverlayContainer = styled.div`
@@ -37,7 +37,8 @@ export const MoviePosterOverlayContainer = styled.div`
     }
   }
 
-  & ${Button} {
+  & ${Button},
+  & ${StyledLink} {
     margin-top:1rem;
   }
 `;
@@ -64,6 +65,7 @@ interface overlayProps {
 isOverlay?: boolean; 
 title?: string;
 rating?: string;
+trailer?: string;
 friendlyName?: string;
 runtime?: string;
 synopsis?: string;
@@ -89,8 +91,9 @@ export const MoviePosterOverlay: React.FunctionComponent<overlayProps> = props =
             rating={props.rating}
             runtime={props.runtime} />
             <ButtonsContainer>
-              <Buttons rounded={true} outline={true} fullWidth={true} large={true} text={"TRAILER"} hasIcon={true} iconSrc={trailerIcon} />
-              <GatsbyLink rounded={true} fullWidth={true} inverted={true} large={true} text={"DETAILS"} hasIcon={true} iconSrc={arrowIcon} url={props.friendlyName} />
+              {props.trailer &&
+              <Buttons rounded={true} outline={true} fullWidth={true} large={true} text={"TRAILER"} hasIcon={true} iconSrc={trailerIcon} url={props.trailer} /> }
+              <GatsbyLink rounded={true} fullWidth={true} inverted={false} large={true} text={"DETAILS"} url={props.friendlyName} />
             </ButtonsContainer>
           </MoviePosterOverlayContainer>
       );

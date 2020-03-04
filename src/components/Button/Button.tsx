@@ -19,6 +19,8 @@ export const StyledLink = styled(Link)<ButtonProps>`
   width: ${props => (props.fullWidth ? '100%' : props.theme.btnWidth)};
   cursor: pointer;
   display: inline-block;
+  color:#fff;
+  text-decoration:none;
   font-weight:bold;
   font-size: 1rem;
   transition:0.2s;
@@ -114,12 +116,14 @@ export const StyledLink = styled(Link)<ButtonProps>`
    }`}
 `;
 
-export const Button = styled('button')<ButtonProps>`
+export const Button = styled('a')<ButtonProps>`
   position:relative;
   width: ${props => (props.fullWidth ? '100%' : props.theme.btnWidth)};
   cursor: pointer;
+  border: 2px solid #fff;
   display: inline-block;
   font-weight:bold;
+  color:#fff;
   font-size: 1rem;
   transition:0.2s;
   padding-left: 1rem;
@@ -216,7 +220,18 @@ export const Button = styled('button')<ButtonProps>`
 
 Button.defaultProps = {
   theme: {
-    btnColorPrimary: '#000',
+    btnColorPrimary: '#252525',
+    btnColorSecondary: '#ccc',
+    btnPaddingLarge: '1rem',
+    btnPaddingRegular: '0.5rem',
+    btnPaddingSmall: '0.2rem',
+    btnWidth: '200px'
+  }
+};
+
+StyledLink.defaultProps = {
+  theme: {
+    btnColorPrimary: '#252525',
     btnColorSecondary: '#ccc',
     btnPaddingLarge: '1rem',
     btnPaddingRegular: '0.5rem',
