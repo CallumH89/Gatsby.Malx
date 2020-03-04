@@ -1,3 +1,6 @@
+# Gatsby.MAlx
+Running gatsby with movie data and components from ScreenPlay (Parasite)
+
 
 ## Running in development
 `gatsby develop`
