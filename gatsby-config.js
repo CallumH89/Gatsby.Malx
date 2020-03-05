@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/gatsby.malx",
   siteMetadata: {
     title: `Gatsby Movies List`,
   },
