@@ -1,5 +1,5 @@
 const path = require(`path`)
-const { onCreateNode, createRemoteFileNode, downloadMediaFiles  } = require(`gatsby-source-filesystem`)
+const { onCreateNode, createRemoteFileNode  } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async function({ actions, graphql }) {
   const { data } = await graphql(`

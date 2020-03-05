@@ -7,6 +7,9 @@ import {H6} from '../Typography/Typography';
 
 interface SessionsContainerProps {
   filmId: string;
+}
+
+interface SessionsContainerState {
   sessions?: any[];
   filmTitle?: string;
   loading?: boolean;
@@ -31,7 +34,7 @@ margin-bottom:2rem;
  }
 `;
 
-export class SessionsContainer extends React.Component<SessionsContainerProps> {
+export class SessionsContainer extends React.Component<SessionsContainerProps, SessionsContainerState> {
     constructor(props) { 
         super(props)
         this.state = {

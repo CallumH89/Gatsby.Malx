@@ -1,11 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { filmData } from '../../types';
 import MovieGridItem from '../MovieGridItem/MovieGridItem';
 import { Grid } from '@material-ui/core';
 
 interface ListingProps {
-  data: filmData[];
+  data: any[];
 }
 
 const Container = styled.div`
@@ -28,6 +27,7 @@ export const MovieGridContext = React.createContext({
 
 export const MovieGrid: React.FunctionComponent<ListingProps> = props => {
   const {showSessions} = React.useContext(MovieGridContext);
+  console.log(props.data)
   return (
     <Container>
       <Grid
@@ -35,7 +35,7 @@ export const MovieGrid: React.FunctionComponent<ListingProps> = props => {
       direction="row"
       spacing={5}
       >
-        {props.data.allMovies.edges.map((singleFilm, i) => (
+        {props.data.map((singleFilm, i) => (
           <Grid
             item
             xl={3}

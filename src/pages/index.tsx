@@ -21,7 +21,7 @@ export default ({ data }) => {
             hasOverlay: true,
             isTrailerOnly:false}}>
             <MovieGrid 
-              data={data} />
+              data={data.allMovies.edges} />
           </MovieGridContext.Provider>
       </div>
     </Layout>

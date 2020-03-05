@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import trailerIcon from '../../libs/svg/icon-trailer.svg';
-import arrowIcon from '../../libs/svg/icon-arrow.svg';
 import {MovieInfo, MovieDetails, MovieSynopsis} from '../MovieDetails/MovieDetails';
 import {H4, P} from '../Typography/Typography';
 import { TrailerIcon } from '../TrailerIcon/TrailerIcon';
@@ -63,6 +62,9 @@ export const MoviePosterOverlayTrailer = styled.div`
 
 interface overlayProps {
 isOverlay?: boolean; 
+isCentered?: boolean; 
+hasSynopsis?: boolean; 
+isTrailerOnly?: boolean; 
 title?: string;
 rating?: string;
 trailer?: string;

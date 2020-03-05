@@ -1,3 +1,7 @@
+export interface movieNodeData {
+    node: filmData[]
+}
+
 export interface filmData {
     FilmId: number,
     Title: string,
