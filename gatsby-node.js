@@ -25,10 +25,11 @@ exports.createPages = async function({ actions, graphql }) {
 
 exports.onCreateNode = async ({  node,  actions: { createNode },  store,  cache,  createNodeId,}) =>  
  {
-    let fileNode
+    let moviePoster
+    let movieHeader
     if (node.internal.type === `Movies`) {
       try {
-        fileNode = await createRemoteFileNode({
+        moviePoster = await createRemoteFileNode({
           url: node.Img,
           parentNodeId: node.id,
           store,
@@ -41,8 +42,27 @@ exports.onCreateNode = async ({  node,  actions: { createNode },  store,  cache,
         console.log(e)
       }
     }
+    if (node.internal.type === `MediaItems`) {
+      try {
+        movieHeader = await createRemoteFileNode({
+          url: node.GTCHeader,
+          parentNodeId: node.id,
+          store,
+          cache,
+          createNode,
+          createNodeId,
+        })
+      } catch (e) {
+        // Ignore
+        console.log(e)
+      }
+    }
 
-    if (fileNode) {
-      node.localImage___NODE = fileNode.id
+    if (moviePoster) {
+      node.localImage___NODE = moviePoster.id
+    }
+
+    if (movieHeader) {
+      node.localHeader___NODE = movieHeader.id
     }
   }

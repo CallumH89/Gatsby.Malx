@@ -6,7 +6,7 @@ import { Grid } from '@material-ui/core';
 import {H1, P} from '../components/Typography/Typography';
 import {MoviePoster, MoviePosterContainer} from '../components/MoviePoster/MoviePoster';
 import {SessionsContainer} from '../components/MovieSessionList/SingleMovieSessions';
-
+import Img from "gatsby-image"
 const StyledH1 = styled(H1)`
   margin-top:0;
 `
@@ -15,10 +15,25 @@ const MovieMeta = styled.span`
   font-weight:bold;
   font-size:1.2rem;
 `
+const MovieHeaderContainer = styled.div`
+width:100%;
+height:300px;
+margin-bottom:2rem;
+`;
+const MovieHeader = styled(Img)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+`;
 
 export default ({ data }) => {
   return (
     <Layout>
+      <MovieHeaderContainer>
+      <MovieHeader loading="lazy" fluid={data.movies.MediaItems.localHeader.childImageSharp.fluid} alt={data.movies.Title} /> 
+      </MovieHeaderContainer>
       <Grid
       container
       direction="row"
@@ -44,7 +59,7 @@ export default ({ data }) => {
               <StyledH1>{data.movies.Title}</StyledH1>
               <P><MovieMeta>Director:</MovieMeta> {data.movies.Director}</P>
               <P><MovieMeta>Cast:</MovieMeta> {data.movies.Cast}</P>
-              <P><MovieMeta>Run Time:</MovieMeta> {data.movies.RunTime}</P>
+              <P><MovieMeta>Run Time:</MovieMeta> {data.movies.RunTime} Mins</P>
               <P>{data.movies.Synopsis}</P>
               <SessionsContainer filmId={data.movies.FilmId} />
           </Grid>
@@ -72,6 +87,15 @@ query($slug:String) {
       Id
       Name
       ExternalId
+    }
+    MediaItems {
+      localHeader {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
     FilmId
     Trailer
