@@ -63,7 +63,7 @@ export const MovieDetails: React.FunctionComponent<detailsProps> = props => {
       }
         </H4>
         <MovieInfo>
-          <P>{props.runtime}</P>
+          <P>{props.runtime} Mins</P>
           <P>{props.rating}</P>
         </MovieInfo>
         {hasSynopsis && 
