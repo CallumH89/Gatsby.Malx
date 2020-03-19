@@ -27,25 +27,25 @@ exports.onCreateNode = async ({  node,  actions: { createNode },  store,  cache,
  {
     let moviePoster
     let movieHeader
-    if (node.internal.type === `Movies`) {
-      try {
-        moviePoster = await createRemoteFileNode({
-          url: node.Img,
-          parentNodeId: node.id,
-          store,
-          cache,
-          createNode,
-          createNodeId,
-        })
-      } catch (e) {
-        // Ignore
-        console.log(e)
-      }
-    }
+    // if (node.internal.type === `Movies`) {
+    //   try {
+    //     moviePoster = await createRemoteFileNode({
+    //       url: node.Img,
+    //       parentNodeId: node.id,
+    //       store,
+    //       cache,
+    //       createNode,
+    //       createNodeId,
+    //     })
+    //   } catch (e) {
+    //     // Ignore
+    //     console.log(e)
+    //   }
+    // }
     if (node.internal.type === `MediaItems`) {
       try {
-        movieHeader = await createRemoteFileNode({
-          url: node.GTCHeader,
+        moviePoster = await createRemoteFileNode({
+          url: node.Poster,
           parentNodeId: node.id,
           store,
           cache,
@@ -59,10 +59,11 @@ exports.onCreateNode = async ({  node,  actions: { createNode },  store,  cache,
     }
 
     if (moviePoster) {
+      console.log(moviePoster)
       node.localImage___NODE = moviePoster.id
     }
 
-    if (movieHeader) {
-      node.localHeader___NODE = movieHeader.id
-    }
+    // if (movieHeader) {
+    //   node.localImage___NODE = movieHeader.id
+    // }
   }

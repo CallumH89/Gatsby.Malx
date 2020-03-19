@@ -21,7 +21,7 @@ export default ({ data }) => {
             hasOverlay: true,
             isTrailerOnly:false}}>
             <MovieGrid 
-              data={data.allMovies.edges} />
+              data={data.allMovies.edges} fallBackPoster={data.file} />
           </MovieGridContext.Provider>
       </div>
     </Layout>
@@ -35,8 +35,6 @@ export const query = graphql`
       node {
         id
         Title
-        Trailer
-        Synopsis
         Sessions {
           Date
           NewDate
@@ -62,16 +60,24 @@ export const query = graphql`
           }
         }
         RunTime
-        Img
-        localImage {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
+        MediaItems{
+          localImage {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
         FilmId
         FriendlyName
+      }
+    }
+  }
+  file(id: {eq: "5b9d99b5-a48e-5473-be79-27a9bac8396b"}) {
+    childImageSharp {
+      fluid(maxWidth: 400) {
+        ...GatsbyImageSharpFluid
       }
     }
   }

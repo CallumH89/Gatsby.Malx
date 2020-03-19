@@ -46,13 +46,13 @@ export class SessionsContainer extends React.Component<SessionsContainerProps, S
         this.setLoading = this.setLoading.bind(this);
     }
     getShowtimes() {
-        fetch(`https://moviegeorgiaapi.peachdigital.com/movies/34/200/${this.props.filmId}`)
+        fetch(`https://movieapi_peachplatform.dev.peachdigital.net/movies/113/7971/${this.props.filmId}`)
         .then(results => results.json())
         .then(data => {
-            if (data.Sessions !== undefined && data.Sessions.length > 0) {
+            if (data.Result.Sessions !== undefined && data.Result.Sessions.length > 0) {
                 this.setState({
-                    filmTitle:data.Title,
-                    sessions:data.Sessions,
+                    filmTitle:data.Result.Title,
+                    sessions:data.Result.Sessions,
                     loading:false
                 });
             } else {

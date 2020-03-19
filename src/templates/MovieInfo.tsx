@@ -32,7 +32,9 @@ export default ({ data }) => {
   return (
     <Layout>
       <MovieHeaderContainer>
-      <MovieHeader loading="lazy" fluid={data.movies.MediaItems.localHeader.childImageSharp.fluid} alt={data.movies.Title} /> 
+        {data.movies.MediaItems.localImage ? 
+        <MovieHeader loading="lazy" fluid={data.movies.MediaItems.localImage.childImageSharp.fluid} alt={data.movies.Title} />:
+        <MovieHeader loading="lazy" fluid={data.file.childImageSharp.fluid} alt={data.movies.Title} /> }
       </MovieHeaderContainer>
       <Grid
       container
@@ -46,7 +48,9 @@ export default ({ data }) => {
             sm={3}
             xs={12}>
               <MoviePosterContainer>
-                <MoviePoster loading="lazy" fluid={data.movies.localImage.childImageSharp.fluid} alt={data.movies.Title} />
+                {data.movies.MediaItems.localImage ?
+                <MoviePoster loading="lazy" fluid={data.movies.MediaItems.localImage.childImageSharp.fluid} alt={data.movies.Title} /> :
+                <MoviePoster loading="lazy" fluid={data.file.childImageSharp.fluid} alt={data.movies.Title} />}
               </MoviePosterContainer>
           </Grid>
           <Grid
@@ -71,16 +75,8 @@ export default ({ data }) => {
 export const query = graphql`
 query($slug:String) {
     movies(FriendlyName: {eq: $slug}) {
-      Title
-      Img
-      localImage {
-        childImageSharp {
-          fluid(maxWidth: 400) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      Cast
+    Title
+    Cast
     Cert
     Director
     Experiences {
@@ -89,18 +85,25 @@ query($slug:String) {
       ExternalId
     }
     MediaItems {
-      localHeader {
+        localImage {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 400) {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
     FilmId
-    Trailer
     Synopsis
     RunTime
+    }
+  
+    file(id: {eq: "5b9d99b5-a48e-5473-be79-27a9bac8396b"}) {
+      childImageSharp {
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
   

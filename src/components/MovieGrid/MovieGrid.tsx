@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 
 interface ListingProps {
   data: any[];
+  fallBackPoster: any;
 }
 
 const Container = styled.div`
@@ -27,7 +28,6 @@ export const MovieGridContext = React.createContext({
 
 export const MovieGrid: React.FunctionComponent<ListingProps> = props => {
   const {showSessions} = React.useContext(MovieGridContext);
-  console.log(props.data)
   return (
     <Container>
       <Grid
@@ -52,7 +52,7 @@ export const MovieGrid: React.FunctionComponent<ListingProps> = props => {
               trailer={singleFilm.node.Trailer}
               runtime={singleFilm.node.RunTime}
               synopsis={singleFilm.node.Teaser}
-              poster={singleFilm.node.localImage.childImageSharp.fluid}
+              poster={singleFilm.node.MediaItems.localImage ? singleFilm.node.MediaItems.localImage.childImageSharp.fluid : props.fallBackPoster.childImageSharp.fluid}
               sessions={singleFilm.node.Sessions}
               filmId={singleFilm.node.FilmId}
             />

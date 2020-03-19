@@ -34,7 +34,8 @@ const MovieGridItem: React.FunctionComponent<itemProps> = props => {
   return (
     <SingleItem>
       <MoviePosterContainer>
-        <MoviePoster fluid={props.poster} alt={props.title} loading="lazy" />
+        {props.poster &&
+        <MoviePoster fluid={props.poster} alt={props.title} loading="lazy" />}
         {hasOverlay &&
           <MoviePosterOverlay 
             isOverlay={true}
