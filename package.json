@@ -7,7 +7,7 @@
     "start": "npm run develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GH_TOKEN@github.com/CallumH89/Gatsby.Malx"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GH_TOKEN@github.com/CallumH89/Gatsby.Malx.git"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
