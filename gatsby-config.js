@@ -1,16 +1,16 @@
 module.exports = {
-  pathPrefix: "/Gatsby.Malx",
+  pathPrefix: '/Gatsby.Malx',
   siteMetadata: {
     title: `Gatsby Movies List`,
   },
   plugins: [
     {
-      resolve: "gatsby-source-custom-api",
+      resolve: 'gatsby-source-custom-api',
       options: {
-        rootKey: "Movies",
-          url:  'https://movieapi_peachplatform.dev.peachdigital.net/Paginatedmovies/113/7971?liteVersion=false&expandGenres=false&genres=&excludeGenres=&startDate=2020-03-19&days=1&endDate=null&expandAttributes=true&splitByAttributes=false&expandCinemas=false&startIndex=0&number=24&attributes=All&attributesExclusion='
-
-      }
+        rootKey: 'Movies',
+        url:
+          'https://movieshowbizapi.peachdigital.com/movies/paginated/55/7924?startIndex=0&endIndex=-1&liteVersion=false&days=0&splitByAttributes=false&expandCinemas=false&expandAttributes=false&startDate=null&endDate=null&expandGenres=false&genres=&attributes=All&attributesExclusion=771',
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -19,7 +19,7 @@ module.exports = {
         path: `${__dirname}/src/media/`,
       },
     },
-    `gatsby-transformer-sharp`, 
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-sass`,
@@ -31,6 +31,6 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
-    }
+    },
   ],
-}
+};

@@ -1,9 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Times } from '../../types';
-import { SingleSession, SessionExperiences, SessionTime } from '../SingleSession/SingleSession';
+import {
+  SingleSession,
+  SessionExperiences,
+  SessionTime,
+} from '../SingleSession/SingleSession';
 import LoadingOverlay from 'react-loading-overlay';
-import {H6} from '../Typography/Typography';
+import { H6 } from '../Typography/Typography';
 
 interface SessionsContainerProps {
   filmId: string;
@@ -16,82 +20,91 @@ interface SessionsContainerState {
 }
 
 interface SessionListProps {
-    date: string;
-    times?: Times[];
-  }
-
+  date: string;
+  times?: Times[];
+}
 
 const LoadingOverlayStyled = styled(LoadingOverlay)`
-    position:unset!important;
+  position: unset !important;
 `;
-
 
 const MovieSessionContainer = styled.div`
-margin-bottom:2rem;
- & ${H6} {
-   margin-top:0rem;
-   margin-bottom:0rem;
- }
+  margin-bottom: 2rem;
+  & ${H6} {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
 `;
 
-export class SessionsContainer extends React.Component<SessionsContainerProps, SessionsContainerState> {
-    constructor(props) { 
-        super(props)
-        this.state = {
-            filmTitle: "",
-            sessions: [],
-            loading: true
-        }
-        this.getShowtimes = this.getShowtimes.bind(this);
-        this.setLoading = this.setLoading.bind(this);
-    }
-    getShowtimes() {
-        fetch(`https://movieapi_peachplatform.dev.peachdigital.net/movies/113/7971/${this.props.filmId}`)
-        .then(results => results.json())
-        .then(data => {
-            if (data.Result.Sessions !== undefined && data.Result.Sessions.length > 0) {
-                this.setState({
-                    filmTitle:data.Result.Title,
-                    sessions:data.Result.Sessions,
-                    loading:false
-                });
-            } else {
-                this.setState({
-                    sessions: [],
-                    loading:false
-                });
-            }
-        });
-    }
-    
-    setLoading(val) {
-        this.setState({
-            loading: val
-        });
-    }
-    
-    componentDidMount() {
-        this.getShowtimes();
-    }
-
-    render() {
-          return (
-              <>
-                <LoadingOverlayStyled spinner={true} active={this.state.loading} fadeSpeed={300} />
-                {this.state.sessions.length > 0 &&
-                    this.state.sessions.map((sessionList, i) => (
-                    <SingleMovieSessions
-                        key={i}
-                        date={sessionList.DisplayDate}
-                        times={sessionList.Times}
-                        />
-                ))}
-            </>
-          )
+export class SessionsContainer extends React.Component<
+  SessionsContainerProps,
+  SessionsContainerState
+> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filmTitle: '',
+      sessions: [],
+      loading: true,
     };
-};
+    this.getShowtimes = this.getShowtimes.bind(this);
+    this.setLoading = this.setLoading.bind(this);
+  }
+  getShowtimes() {
+    fetch(
+      `https://movieshowbizapi.peachdigital.com/movies/55/7924/${this.props.filmId}?expandAttributes=true`
+    )
+      .then((results) => results.json())
+      .then((data) => {
+        if (data.Sessions !== undefined && data.Sessions.length > 0) {
+          this.setState({
+            filmTitle: data.Title,
+            sessions: data.Sessions,
+            loading: false,
+          });
+        } else {
+          this.setState({
+            sessions: [],
+            loading: false,
+          });
+        }
+      });
+  }
 
-export const SingleMovieSessions: React.FunctionComponent<SessionListProps> = props => {
+  setLoading(val) {
+    this.setState({
+      loading: val,
+    });
+  }
+
+  componentDidMount() {
+    this.getShowtimes();
+  }
+
+  render() {
+    return (
+      <>
+        <LoadingOverlayStyled
+          spinner={true}
+          active={this.state.loading}
+          fadeSpeed={300}
+        />
+        {this.state.sessions.length > 0 &&
+          this.state.sessions.map((sessionList, i) => (
+            <SingleMovieSessions
+              key={i}
+              date={sessionList.DisplayDate}
+              times={sessionList.Times}
+            />
+          ))}
+      </>
+    );
+  }
+}
+
+export const SingleMovieSessions: React.FunctionComponent<SessionListProps> = (
+  props
+) => {
   return (
     <MovieSessionContainer>
       <H6>{props.date}</H6>
@@ -106,18 +119,16 @@ export const SingleMovieSessions: React.FunctionComponent<SessionListProps> = pr
               sessionExpired={singleSession.SessionExpired}
             >
               <SessionTime>{singleSession.StartTime}</SessionTime>
-              {singleSession.Experience && 
-              singleSession.Experience.length > 0 &&
+              {singleSession.Experience && singleSession.Experience.length > 0 && (
                 <SessionExperiences>
                   {singleSession.Experience.map((experience, i) => (
                     <span>{experience.ExternalId}</span>
                   ))}
                 </SessionExperiences>
-              }
+              )}
             </SingleSession>
           ))}
       </div>
     </MovieSessionContainer>
   );
 };
-
