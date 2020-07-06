@@ -9,7 +9,7 @@ module.exports = {
       options: {
         rootKey: 'Movies',
         url:
-          'https://movieshowbizapi.peachdigital.com/movies/paginated/55/7924?startIndex=0&endIndex=-1&liteVersion=false&days=0&splitByAttributes=false&expandCinemas=false&expandAttributes=false&startDate=null&endDate=null&expandGenres=false&genres=&attributes=All&attributesExclusion=771',
+          'https://movieshowbizapi.peachdigital.com/movies/paginated/55/7917?startIndex=0&endIndex=-1&liteVersion=false&days=0&splitByAttributes=false&expandCinemas=false&expandAttributes=false&startDate=null&endDate=null&expandGenres=false&genres=&attributes=All&attributesExclusion=771',
       },
     },
     {
