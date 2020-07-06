@@ -52,7 +52,7 @@ export class SessionsContainer extends React.Component<
   }
   getShowtimes() {
     fetch(
-      `https://movieshowbizapi.peachdigital.com/movies/55/7924/${this.props.filmId}?expandAttributes=true`
+      `https://movieshowbizapi.peachdigital.com/movies/55/7917/${this.props.filmId}?expandAttributes=true`
     )
       .then((results) => results.json())
       .then((data) => {
