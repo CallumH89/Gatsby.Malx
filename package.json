@@ -43,6 +43,7 @@
     "theme-ui": "^0.3.1",
     "typescript": "^3.8.3",
     "typography": "^0.16.19",
-    "typography-theme-kirkham": "^0.16.19"
+    "typography-theme-kirkham": "^0.16.19",
+    "webpack": "^4.43.0"
   }
 }
